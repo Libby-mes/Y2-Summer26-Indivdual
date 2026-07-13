@@ -67,4 +67,22 @@ Both are billed and measured in small text chunks called tokens.
 Temperature controls the creativity of the AI's responses. A higher temperature (2) makes the output more random and creative, 
 while a lower temperature (0) makes it so it answers exactly the same way.
 
+The API needs the full history evrytime to go back and look at the previous messages to understand the context of the conversation.
+
+Reflection lab 2:
+1. tokens are like writing down an essay, the more words you write the more power you use.
+
+2. if we delete - history.append({'role': 'user', 'content': user_input}) - the AI recives no context of what the user said,
+ so it will not be able to answer correctly. and the input tokens will not be counted because the AI will not know what the user said from before.
+ - what really happend - the AI was not able to answer correctly because it has no context of what the user said,
+  and the input tokens were not counted because the AI did not know what the user said from before.
+ if we delete - history.append({'role': 'assistant', 'content': reply}) - the AI will forget what it said and will not be able to answer correctly,
+and the output tokens will not be counted because the AI will not know what it said from before.
+if we delete - print('History so far:', history) - the AI will not act differently because Print statements are just for debugging visibility — 
+they don't affect the program's logic or the AI's behavior. 
+Only code that changes data (like .append()) or gets passed into the API call actually matters.
+- what what really happened - the AI did not act differently because print statements are just for debugging visibility —
+they don't affect the program's logic or the AI's behavior.
+
+ 3. i did not have any bugs in this lab!!
 '''
