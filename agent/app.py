@@ -19,16 +19,19 @@ def run_chat():
             break
 
         history.append({'role': 'user', 'content': user_input})
+        print('History:', history)
 
         response = client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=300,
-            temperature=0.7,
+            temperature=1,
             system=system_message,
             messages=history
         )
 
         reply = response.content[0].text
+        #print(response)
+
         print(f'Claude: {reply}')
         history.append({'role': 'assistant', 'content': reply})
 
@@ -37,7 +40,7 @@ run_chat()
 #This is different from chatgpt because it is a lot slower and harder to work with, it also has no UI
 #Which also makes it harder to work with.
 
-''' Reflection:
+''' Reflection lab 1:
 1. It's like walking into the middle of a movie without seeing the earlier scenes. 
 Every conversation makes sense because of what happened before, 
 so if you only saw the last minute, you'd miss why the characters are saying what they are. 
@@ -55,3 +58,13 @@ but if i added a pass statement it would keep running even if we type exit.
 3. i remember the biggest bug i had today was that i forgot to add the .env file to the .gitignore file,
  so when i pushed it to github it was almost public and anyone could see my API key. but thankfully the repository was not aloowing it,
  it said it was aggaint the rules and it was not allowing me to push it.'''
+
+'''lab 2:
+Input tokens = what you send in.
+Output tokens = what the AI sends back.
+Both are billed and measured in small text chunks called tokens.
+
+Temperature controls the creativity of the AI's responses. A higher temperature (2) makes the output more random and creative, 
+while a lower temperature (0) makes it so it answers exactly the same way.
+
+'''
